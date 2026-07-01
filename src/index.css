@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --color-primary: #2E6F40;
+  --color-primary-container: #253D2C;
+  --color-on-primary: #ffffff;
+  --color-secondary: #68BA7F;
+  --color-secondary-container: #CFFFDC;
+  --color-on-secondary-container: #253D2C;
+  --color-tertiary: #253D2C;
+  --color-tertiary-container: #2E6F40;
+  --color-on-tertiary-container: #68BA7F;
+  --color-background: #f4faf6;
+  --color-on-background: #1b261f;
+  --color-surface: #f4faf6;
+  --color-on-surface: #1b261f;
+  --color-on-surface-variant: #3a4d3f;
+  --color-outline: #687d6d;
+  --color-outline-variant: #cbded0;
+  --color-surface-container: #e6f2eb;
+  --color-surface-container-low: #f0f7f3;
+  --color-surface-container-high: #dbebe0;
+  --color-surface-container-highest: #d2e4d7;
+  --color-surface-bright: #f4faf6;
+  --color-inverse-surface: #253d2c;
+  --color-inverse-on-surface: #f4faf6;
+  --color-primary-fixed: #cfffdc;
+  --color-primary-fixed-dim: #99dfab;
+  --color-secondary-fixed: #e2fce9;
+  --color-secondary-fixed-dim: #b5ebd4;
+  --color-tertiary-fixed: #e6fced;
+  --color-tertiary-fixed-dim: #a6ebd7;
+
+  --shadow-premium: 0 10px 30px -5px rgba(46, 111, 64, 0.08), 0 4px 12px -2px rgba(46, 111, 64, 0.04);
+  --shadow-premium-hover: 0 22px 48px -10px rgba(46, 111, 64, 0.16), 0 10px 24px -5px rgba(46, 111, 64, 0.08);
+  --shadow-glow: 0 0 25px rgba(104, 186, 127, 0.18);
+  --shadow-glow-strong: 0 0 35px rgba(46, 111, 64, 0.25);
+  --shadow-float: 0 15px 35px -5px rgba(37, 61, 44, 0.12), 0 6px 15px -3px rgba(37, 61, 44, 0.06);
+}
+
+/* Custom CSS classes for Glassmorphism & Industrial Theme */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 12px rgba(46, 111, 64, 0.03);
+}
+
+.glass-panel-dark {
+  background: rgba(46, 111, 64, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(46, 111, 64, 0.1);
+}
+
+.industrial-grid {
+  background-image: radial-gradient(rgba(46, 111, 64, 0.1) 0.5px, transparent 0.5px);
+  background-size: 32px 32px;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #f0f7f3 0%, #e6f2eb 100%);
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.glass-hero {
+  background: linear-gradient(135deg, rgba(37, 61, 44, 0.98) 0%, rgba(46, 111, 64, 0.85) 100%);
+}
+
+.spec-ribbon {
+  background: linear-gradient(90deg, #2E6F40 0%, #253D2C 100%);
+}

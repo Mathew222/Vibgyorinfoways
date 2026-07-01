@@ -1,0 +1,6 @@
+{
+  "name": "Vibgyor Infoways",
+  "description": "Precision Industrial IT Solutions, Biometrics, RFID, and Thermal Printing hardware catalog & technical support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
