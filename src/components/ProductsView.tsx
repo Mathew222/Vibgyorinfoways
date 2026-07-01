@@ -97,7 +97,7 @@ export default function ProductsView({ onInquireProduct, onTalkToExpert }: Produ
   };
 
   return (
-    <div className="space-y-12 font-sans">
+    <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-8 pb-28 md:pb-12 space-y-12 font-sans">
       
       {/* Header & Search */}
       <section className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-outline-variant/30">

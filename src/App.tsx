@@ -78,7 +78,7 @@ export default function App() {
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Container Stage with Premium Motion Transitions */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-8 pb-28 md:pb-12 text-center overflow-hidden">
+      <main className="flex-1 w-full text-center overflow-hidden flex flex-col">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}

@@ -37,93 +37,134 @@ export default function HomeView({ setActiveTab, onInquireClick }: HomeViewProps
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
   };
 
+  // Animation variants for full-screen hero staggered entrance
+  const heroContainerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const heroItemVariants = {
+    hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      transition: { 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1] 
+      } 
+    }
+  };
+
   return (
-    <div className="space-y-20 font-sans">
+    <div className="w-full flex flex-col items-center">
       
-      {/* Hero Section */}
+      {/* Modern Full-Screen Hero Section with High-Quality Background & Readability Overlay */}
       <motion.section 
-        initial={{ opacity: 0, y: 30, scale: 0.99 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-        className="relative overflow-hidden glass-panel rounded-2xl p-6 md:p-16 flex flex-col lg:flex-row items-center gap-12 border border-white/50 shadow-premium hover:shadow-premium-hover transition-all duration-500 text-left"
+        variants={heroContainerVariants}
+        initial="hidden"
+        animate="show"
+        className="relative w-full min-h-[85vh] lg:h-[calc(100vh-4rem)] flex flex-col items-center justify-center text-center overflow-hidden px-4 md:px-8 py-16"
       >
-        {/* Abstract light bubbles */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-72 h-72 bg-primary/10 rounded-full filter blur-3xl pointer-events-none" />
-        
-        <div className="flex-1 space-y-6 z-10">
+        {/* Background Image: High-Quality Industrial Barcode Logistics Operations with Zoom-in Effect */}
+        <motion.div 
+          initial={{ scale: 1.02 }}
+          animate={{ scale: 1.12 }}
+          transition={{ duration: 15, ease: "easeOut" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat select-none pointer-events-none"
+          style={{ 
+            backgroundImage: `url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=2000')`
+          }}
+        />
+
+        {/* High-Contrast Corporate Dark Overlay for Perfect Typography Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/85 backdrop-blur-[1.5px]" />
+
+        {/* Hero Content Container */}
+        <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center space-y-8">
+          
+          {/* Badge: Staggered Fade-in */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full font-sans text-xs font-bold border border-white/40 shadow-sm"
+            variants={heroItemVariants}
+            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/40 text-primary px-4 py-2 rounded-full font-mono text-xs font-bold tracking-widest uppercase shadow-glow"
           >
-            <Award size={14} className="text-primary fill-primary" />
-            <span>16 Years Excellence</span>
+            <Sparkles size={14} className="text-primary animate-pulse" />
+            <span>Authorized Enterprise Systems Integrator</span>
           </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-3xl md:text-5xl font-bold text-on-surface leading-tight tracking-tight"
+
+          {/* Large Bold Headline */}
+          <motion.h1 
+            variants={heroItemVariants}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight max-w-4xl font-sans"
           >
-            Precision in <span className="text-primary border-b-2 border-primary/20 pb-1">Industrial Hardware</span> Solutions
-          </motion.h2>
-          
+            Mission-Critical <span className="text-primary bg-clip-text">Industrial Hardware</span> for the Supply Chain
+          </motion.h1>
+
+          {/* Short Description */}
           <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-base md:text-lg text-on-surface-variant max-w-xl font-normal leading-relaxed"
+            variants={heroItemVariants}
+            className="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl font-light leading-relaxed font-sans"
           >
-            Vibgyor Infoways provides mission-critical IT equipment for barcode scanning, biometrics, and thermal printing. Partnering with global leaders like Zebra and Motorola to ensure your supply chain never stops.
+            Vibgyor Infoways delivers high-performance barcode scanning systems, automated biometrics, and heavy-duty thermal printing hardware. Built for 99.9% uptime compliance to ensure your logistics, warehousing, and enterprise operations never halt.
           </motion.p>
-          
+
+          {/* Call-to-Action Buttons */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-wrap gap-4 pt-2"
+            variants={heroItemVariants}
+            className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto"
           >
             <button 
               onClick={() => {
                 setActiveTab('products');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="bg-primary text-on-primary px-6 py-3.5 font-semibold text-sm rounded-lg hover:shadow-premium hover:bg-primary/95 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 cursor-pointer uppercase tracking-wider shadow-md"
+              className="bg-primary text-on-primary px-8 py-4 font-bold text-sm rounded-lg hover:shadow-glow-strong hover:bg-primary/90 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider shadow-lg duration-200"
             >
-              <span>Explore Catalog</span>
-              <ChevronRight size={16} />
+              <span>Explore Equipment Portfolio</span>
+              <ArrowRight size={16} />
             </button>
+            
             <button 
               onClick={() => {
                 setActiveTab('services');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="glass-panel border border-primary/25 text-primary px-6 py-3.5 font-semibold text-sm rounded-lg hover:bg-white/90 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer uppercase tracking-wider"
+              className="bg-white/10 text-white border border-white/25 px-8 py-4 font-bold text-sm rounded-lg hover:bg-white/20 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer uppercase tracking-wider backdrop-blur-xs duration-200 flex items-center justify-center"
             >
-              Technical Support
+              Technical Helpdesk
             </button>
           </motion.div>
-        </div>
 
-        {/* Hero Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex-1 w-full relative group"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl filter blur-xl opacity-30 group-hover:opacity-50 transition-opacity" />
-          <motion.img 
-            whileHover={{ scale: 1.02, rotate: 1 }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            alt="Vibgyor Thermal Printer Hero" 
-            className="w-full h-[320px] md:h-[400px] object-contain drop-shadow-xl relative z-10 cursor-zoom-in" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJbmTXE2ZM-0jG1wPrfVXjIBrw6F50K7x-4r5a0bP63HZeC2K8A2AdKPMuL87AWPfZqe4RHHlLgo4p0DOMn5ThiAUtdfIa82L_WQZEJwLKZoFPEOjJ-trapnWs-MSdnzBfUrty90pDAr4iHBlDfI0ZccWIhffV_cQU8gY8e1oO70i4djWFitu3-LwdMD7lBw4lo-UuW_ES9CDAOya2CJekAzd7Xr63ICqU01V-3pFN4J_8oD-1s0lCPJYI7jZhLe1N60gj-ZuinjJ1" 
-          />
-        </motion.div>
+          {/* Horizontal Stats Trust row */}
+          <motion.div 
+            variants={heroItemVariants}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 pt-10 border-t border-white/10 w-full max-w-3xl mt-6"
+          >
+            <div className="text-center sm:text-left flex flex-col items-center sm:items-start">
+              <span className="text-white font-black text-2xl sm:text-3xl tracking-tight">16+ Years</span>
+              <span className="text-white/60 font-mono text-xs uppercase tracking-wider mt-1">Industry Excellence</span>
+            </div>
+            <div className="text-center sm:text-left flex flex-col items-center sm:items-start border-y sm:border-y-0 sm:border-x border-white/10 py-3 sm:py-0 sm:px-8">
+              <span className="text-white font-black text-2xl sm:text-3xl tracking-tight">99.9% SLA</span>
+              <span className="text-white/60 font-mono text-xs uppercase tracking-wider mt-1">Operational Uptime</span>
+            </div>
+            <div className="text-center sm:text-left flex flex-col items-center sm:items-start">
+              <span className="text-white font-black text-2xl sm:text-3xl tracking-tight">Direct OEM</span>
+              <span className="text-white/60 font-mono text-xs uppercase tracking-wider mt-1">Certified Solutions</span>
+            </div>
+          </motion.div>
+
+        </div>
       </motion.section>
+
+      {/* Structured Constraints Content Container */}
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-16 pb-28 md:pb-12 space-y-24 text-center">
 
       {/* Product Categories Bento Grid */}
       <section className="space-y-8">
@@ -358,6 +399,8 @@ export default function HomeView({ setActiveTab, onInquireClick }: HomeViewProps
           </div>
         </motion.div>
       </section>
+
+      </div>
 
     </div>
   );

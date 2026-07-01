@@ -95,7 +95,7 @@ export default function SupportView({ prefilledProduct, setPrefilledProduct }: S
   };
 
   return (
-    <div className="space-y-16 font-sans">
+    <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-8 pb-28 md:pb-12 space-y-16 font-sans">
       
       {/* Hero Header */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
